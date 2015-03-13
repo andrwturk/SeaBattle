@@ -1,7 +1,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 
-#define FIELD_LENGTH 6
+// #define FIELD_LENGTH 6 перенесено в coord.h
 
 // public types
 typedef enum {
