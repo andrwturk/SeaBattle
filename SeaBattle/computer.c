@@ -1,12 +1,17 @@
 #include "computer.h"
 
 
+int computerTurnNumber = 0; // инициализируем переменную для счета ходов компьютера;
+
+int shipHurted = 0;		//Инициализируем переменные состояния кораблей;
+int shipKilled = 0;
+
 
 
 Coord computerMove() {
 
-
-		
+srand(time(NULL)); // Инициализируем генератор случайных чисел;
+			
 	if (shipHurted == 0) // рандомный пиу-пиу если прошлый выстрел был мимо;
 	{
 		c.x = rand () %FIELD_LENGTH;
@@ -52,7 +57,7 @@ Coord computerMove() {
 				if (hurtHit.y == FIELD_LENGTH - 1)
 					c.y = hurtHit.y - shipHurted;
 				else if (hurtHit.y < shipHurted)		//можно проверку сделать путем (previousHurtHit.y == 0) нужно подумать как лучше
-					c,y = hurtHit.y + 1;		//если предыдущий выстрел был возле границы - стреляем всегда ввниз;
+					c.y = hurtHit.y + 1;		//если предыдущий выстрел был возле границы - стреляем всегда ввниз;
 				else
 				{
 					int shootVariants [2] = {-shipHurted, 1};
@@ -64,7 +69,7 @@ Coord computerMove() {
 				if (hurtHit.y == 0)
 					c.y = hurtHit.y + shipHurted;
 				else if (hurtHit.y < shipHurted)		//можно проверку сделать путем (previousHurtHit.y == FIELD_LENGTH - 1) нужно подумать как лучше
-					c,y = hurtHit.y - 1;		//если предыдущий выстрел был возле границы - стреляем всегда вверх;
+					c.y = hurtHit.y - 1;		//если предыдущий выстрел был возле границы - стреляем всегда вверх;
 				else
 				{
 					int shootVariants [2] = {shipHurted, -1};
@@ -81,7 +86,7 @@ Coord computerMove() {
 				if (hurtHit.x == FIELD_LENGTH - 1)
 					c.x = hurtHit.x - shipHurted;
 				else if (hurtHit.x < shipHurted)		//можно проверку сделать путем (previousHurtHit.x == 0) нужно подумать как лучше
-					c,x = hurtHit.x + 1;		//если предыдущий выстрел был возле границы - стреляем всегда ввправо;
+					c.x = hurtHit.x + 1;		//если предыдущий выстрел был возле границы - стреляем всегда ввправо;
 				else
 				{
 					int shootVariants [2] = {-shipHurted, 1};
@@ -93,7 +98,7 @@ Coord computerMove() {
 				if (hurtHit.x == 0)
 					c.x = hurtHit.x + shipHurted;
 				else if (hurtHit.x < shipHurted)		//можно проверку сделать путем (previousHurtHit.x == FIELD_LENGTH - 1) нужно подумать как лучше
-					c,x = hurtHit.x - 1;		//если предыдущий выстрел был возле границы - стреляем всегда влево;
+					c.x = hurtHit.x - 1;		//если предыдущий выстрел был возле границы - стреляем всегда влево;
 				else
 				{
 					int shootVariants [2] = {shipHurted, -1};
