@@ -4,16 +4,19 @@
 
 Coord humanMove() {
 	int x_letter;
+	int y_letter;
 	int confirm;
 	Coord c;
 	Start:
 	printf("Enter a coordinate on the Y axis (from 1 to 6)\n");
 	Start_Y:
 	scanf("%d",&c.y);
+	y_letter = c.y;
 	if (c.y < 1 || c.y > 6){
-			system("cls");
-			printf("\nIncorrect axis coordinate (coordinate should be in the range of from 1 to 6)\nEnter the coordinate of Y axis again\n\n");
-			goto Start_Y;
+		system("cls");
+		printf("\nIncorrect axis coordinate (coordinate should be in the range of from 1 to 6)\nEnter the coordinate of Y axis again\n\n");
+		fflush(stdin);
+		goto Start_Y;
 	}
 	fflush(stdin);
 	printf("Enter a coordinate on the X axis (from a to f)\n");
@@ -35,7 +38,6 @@ Coord humanMove() {
 			break;
 		case 'E':
 			c.x = 5;
-			break;
 		case 'F':
 			c.x = 6;
 			break;
@@ -80,10 +82,15 @@ Coord humanMove() {
 		system("cls");
 		fflush(stdin);
 		Answer:
-		printf("You Enter such cordinate :\n Y = %d\n X = %c\n Please enter\n - y if you confirm cordinatesor \n - n if you want enter cordinates again\n ",c.y,x_letter);
+		printf("You Enter such cordinate :\n Y = %d\n X = %c\n Please enter\n - y if you confirm cordinatesor \n - n if you want enter cordinates again\n ",y_letter,x_letter);
 		confirm = getchar();
 		if (confirm == 'y' || confirm == 'Y')
+		{	
+			c.y -=1;
+			c.x -=1;
 			return c;
+		}
+			
 		else if (confirm == 'n' || confirm == 'N')
 		{
 			system("cls");
