@@ -3,7 +3,7 @@
 
 
 Coord humanMove() {
-	C	int x_letter;
+	int x_letter;
 	int confirm;
 	Coord c;
 	Start:
