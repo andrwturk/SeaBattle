@@ -7,7 +7,12 @@ int countShipCells() {
 }
 
 void placeShips() {
-	setShipCell(HUMAN, 0,1);
+	placeShips_4_Cells(); //разставляет четырех палубные
+	placeShips_3_Cells(); //разставляет трьохпалубные
+	placeShips_2_Cells(); //разставляет двухпалубные
+	placeShips_1_Cells(); //разставляет однопалубные
+}
+/*	setShipCell(HUMAN, 0,1);
 	setShipCell(HUMAN, 3,3);
 	setShipCell(HUMAN, 4,3);
 	setShipCell(HUMAN, 5,3);
@@ -20,6 +25,4 @@ void placeShips() {
 	setShipCell(HUMAN, 3,0);
 	setShipCell(HUMAN, 4,0);
 	setShipCell(HUMAN, 5,0);
-
-
-}
+*/
