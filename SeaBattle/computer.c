@@ -1,10 +1,11 @@
 #include "computer.h"
 
+Coord hurtHit, previousHurtHit, c;			// Инициализируем структуру для хранения последнего успешного выстрела.
 
 int computerTurnNumber = 0; // инициализируем переменную для счета ходов компьютера;
 
 int shipHurted = 0;		//Инициализируем переменные состояния кораблей;
-int shipKilled = 0;
+int humanShipKilled = 0;
 
 
 
@@ -123,7 +124,7 @@ void tellComputerShipKilled()
 {
 
 	shipHurted = 0;  //обнуляем флаг подбитого корабля;
-	++shipKilled;
+	++humanShipKilled;
 	
 	computerTurnNumber++; // считаем количество ходов;
 

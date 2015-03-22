@@ -4,7 +4,15 @@
 #include "human.h"
 #include "coord.h"
 
+#define NUMBER_OF_SHIPS 6
+
 void gameMain();
+void checkHumanMove();
+int countAliveShipCell ();
+void checkComputerMove();
+
+CellType cell;
+int computerShipKilled = 0;
 
 int main(int argc, char const *argv[])
 {
@@ -12,11 +20,10 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
-void gameMain() { // game entry point
+void gameMain() // game entry point
+{ 
 
 	// game main cycle
-
-	
 	initField();
 	placeShips();
 
@@ -26,36 +33,105 @@ void gameMain() { // game entry point
 
 	printField();
 
-	//Первым ходит человек;
-
-	c = humanMove();
-
-	CellType cell;
-	cell = shoot(COMPUTER, c.x, c.y);	
-	
-	if (cell == CHECKED_CELL)
+	while (computerShipKilled < NUMBER_OF_SHIPS && humanShipKilled < NUMBER_OF_SHIPS)
 	{
-		printf("You've already shot in this cell\n");
-	}
+		//Первым ходит человек;
+		c = humanMove();
+		cell = shoot(COMPUTER, c.x, c.y);	
+		checkHumanMove();
 
+		//Вторым ходит компьютер;	
+		c = computerMove();
+		cell = shoot(HUMAN, c.x, c.y);
+		checkComputerMove();
 
-	if (cell == SHIP_CELL) 
-	{
-		printf("Good job! You've hurted the ship!\n");
+		printField();
 	}
 	
+	if (computerShipKilled == NUMBER_OF_SHIPS)
+		printf("You won the game!\n");
+	else
+		printf("You lost the game! Try once again!\n");
+}
+
+void checkHumanMove()
+{
+	while (cell == CHECKED_CELL || cell == KILLED_SHIP_CELL || cell == SHIP_CELL)
+	{
+		
+		if (cell == CHECKED_CELL || cell == KILLED_SHIP_CELL)
+			printf("You've already shot in this cell. Please shoot again!\n");
+		else
+		{
+			if (countAliveShipCell(COMPUTER) != 0) //если есть живые клетки корабля значит корабль ранен
+				pfintf ("You've hurhed the ship! Shoot again!");
+			else
+			{
+				printf("Congratulations! You've sunk the ship! Shoot again!\n"); //если нет живых клеток корабля - следственно корабль убит.
+				computerShipKilled++;
+			}
+		}
+		c = humanMove(); // Если игрок попал либо в стреляную точку либо в корабль - у игрока появляется дополнительный ход.
+		cell = shoot(COMPUTER, c.x, c.y);
+	}
+	
+	if (cell == EMPTY_CELL)
+			printf("There is nothing!\n");
+}
 
 
-	
-	c = computerMove();
-	shoot(HUMAN, c.x, c.y);
+int countAliveShipCell (Player p) //ищем живые клетки корабля во всех направлениях, считаем их и выводим из функции.
+{
+	CellType tempCell = EMPTY_CELL;
+	int numberOFaliveShipCell = 0;
+	int i;
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i)  //проходимся влево от точки
+	{
+		tempCell = check(p, c.x - i, c.y);
+		if (tempCell == SHIP_CELL)
+			numberOFaliveShipCell++;
 
-	
-	// to determine that Ship was killed, store last success computer move, than make another move.
-	// if another move is empty cell --> ship was killed, so call tellComputerShipKilled()
+	}
 
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вправо
+	{
+		tempCell = check(p, c.x + i, c.y);
+		if (tempCell == SHIP_CELL)
+			numberOFaliveShipCell++;
+
+	}
+
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вверх
+	{
+		tempCell = check(p, c.x, c.y - i);
+		if (tempCell == SHIP_CELL)
+			numberOFaliveShipCell++;
+
+	}
 	
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вниз
+	{
+		tempCell = check(p, c.x, c.y + i);
+		if (tempCell == SHIP_CELL)
+			numberOFaliveShipCell++;
+
+	}
+	return numberOFaliveShipCell;
+}
+
+void checkComputerMove()
+{
+	while (cell == CHECKED_CELL || cell == KILLED_SHIP_CELL || cell == SHIP_CELL)
+	{
+		
+		if (countAliveShipCell(HUMAN) != 0) //если есть живые клетки корабля значит корабль ранен
+			tellComputerShipHurted();
+		else
+			tellComputerShipKilled();
+		c = computerMove();					//Если коммп попал или стрельнул куда уже стрелял - даем ему стрельнуть еще разок.
+		cell = shoot(HUMAN, c.x, c.y);
+	}
 	
-	
-	
+	if (cell == EMPTY_CELL)
+			tellComputerMissed();
 }
