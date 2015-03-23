@@ -4,7 +4,7 @@
 #include "stdio.h"
 
 
-
+int humanShipKilled = 0;
 
 
 //Coord c;

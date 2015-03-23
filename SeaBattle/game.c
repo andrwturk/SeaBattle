@@ -12,7 +12,11 @@ int countAliveShipCell ();
 void checkComputerMove();
 
 CellType cell;
+Coord c;
+
 int computerShipKilled = 0;
+//int humanShipKilled = 0;
+//extern humanShipKilled;
 
 int main(int argc, char const *argv[])
 {
@@ -29,7 +33,7 @@ void gameMain() // game entry point
 
 	setPlayerName("Andrew");
 
-	Coord c;
+	
 
 	printField();
 
