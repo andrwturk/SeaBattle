@@ -48,15 +48,15 @@ int a;
 	}	
 	else if (FIELD_LENGTH == 8)
 	{	
-		for (i=1; i <= 1; i++)
+		for (a=1; a <= 1; a++)
 		{
 			while (placeShip_Cells(p,3) !=1 ); 
 		}
-		for (i=1; i <= 2; i++)
+		for (a=1; a <= 2; a++)
 		{
 			while (placeShip_Cells(p,2) !=1 ); 
 		}
-		for (i=1; i <= 3; i++)
+		for (a=1; a <= 3; a++)
 		{
 			while (placeShip_Cells(p,1) !=1 ); 
 		}
@@ -64,11 +64,11 @@ int a;
 	}	
 	else if (FIELD_LENGTH == 6)
 	{	
-		for (i=1; i <= 1; i++)
+		for (a=1; a <= 1; a++)
 		{
 			while (placeShip_Cells(p,2) !=1 );
 		}
-		for (i=1; i <= 2; i++)
+		for (a=1; a <= 2; a++)
 		{
 			while (placeShip_Cells(p,1) !=1 );
 		}
