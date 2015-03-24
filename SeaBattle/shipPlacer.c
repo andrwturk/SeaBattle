@@ -16,7 +16,7 @@ int direction;
 Coord c;
 int i,j;
 
-int placeShips(Player p) 
+void placeShips(Player p) 
 {
 	
 srand(time(NULL));
@@ -44,7 +44,7 @@ int a;
 			while (placeShip_Cells(p,1) !=1 );
 			//print_computer ();	
 		}
-		return 1;
+
 	}	
 	else if (FIELD_LENGTH == 8)
 	{	
@@ -60,7 +60,7 @@ int a;
 		{
 			while (placeShip_Cells(p,1) !=1 ); 
 		}
-		return 1;
+
 	}	
 	else if (FIELD_LENGTH == 6)
 	{	
@@ -72,9 +72,9 @@ int a;
 		{
 			while (placeShip_Cells(p,1) !=1 );
 		}
-		return 1;
+
 	}
-	return 0;
+
 }
 int placeShip_Cells(Player p,int quanity)
 {	
