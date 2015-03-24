@@ -30,7 +30,8 @@ void gameMain() // game entry point
 
 	// game main cycle
 	initField();
-	placeShips();
+	placeShips(HUMAN);
+	placeShips(COMPUTER);
 
 	setPlayerName("Andrew");
 
