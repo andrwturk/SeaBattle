@@ -95,33 +95,33 @@ int countAliveShipCell (Player p) //ищем живые клетки кораб�
 	CellType tempCell = EMPTY_CELL;
 	int numberOFaliveShipCell = 0;
 	int i;
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i)  //проходимся влево от точки
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL || (c.x - i) < 0; ++i)  //проходимся влево от точки
 	{
-		tempCell = check(p, c.x - i, c.y);
+		tempCell = check(p, (c.x - i), (c.y));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
 	}
 
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вправо
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL || (c.x + i) > (FIELD_LENGTH -1); ++i) //проходимся вправо
 	{
-		tempCell = check(p, c.x + i, c.y);
+		tempCell = check(p, (c.x + i), (c.y));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
 	}
 
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вверх
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL || (c.y - i) < 0; ++i) //проходимся вверх
 	{
-		tempCell = check(p, c.x, c.y - i);
+		tempCell = check(p, (c.x), (c.y - i));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
 	}
 	
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вниз
+	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL || (c.y + i) > (FIELD_LENGTH -1); ++i) //проходимся вниз
 	{
-		tempCell = check(p, c.x, c.y + i);
+		tempCell = check(p, (c.x), (c.y + i));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
