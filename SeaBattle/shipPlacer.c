@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "field.h"
 #include "coord.h"
 #include "shipPlacer.h"
@@ -15,7 +16,7 @@ int direction;
 Coord c;
 int i,j;
 
-int placeShips(Player p) 
+void placeShips(Player p) 
 {
 srand(time(NULL));
 
@@ -36,7 +37,7 @@ if (FIELD_LENGTH >= 10)
 	{
 		while (placeShip_Cells(p,1) !=1 ); 
 	}
-	return 1;
+
 }	
 else if (FIELD_LENGTH == 8)
 {	
@@ -56,7 +57,7 @@ else if (FIELD_LENGTH == 8)
 	{
 		while (placeShip_Cells(p,1) !=1 ); 
 	}
-	return 1;
+
 }	
 else if (FIELD_LENGTH == 6)
 	{	
@@ -76,9 +77,9 @@ else if (FIELD_LENGTH == 6)
 	{
 		while (placeShip_Cells(p,1) !=1 );
 	}
-	return 1;
+
 }
-return 0;
+
 }
 int placeShip_Cells(Player p,int quanity)
 {	
