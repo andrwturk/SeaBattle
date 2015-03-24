@@ -48,10 +48,6 @@ int a;
 	}	
 	else if (FIELD_LENGTH == 8)
 	{	
-		for (i=1; i <= 0; i++)
-		{
-			while (placeShip_Cells(p,4) !=1 );  
-		}
 		for (i=1; i <= 1; i++)
 		{
 			while (placeShip_Cells(p,3) !=1 ); 
@@ -68,14 +64,6 @@ int a;
 	}	
 	else if (FIELD_LENGTH == 6)
 	{	
-		for (i=1; i <= 0; i++)
-		{
-			while (placeShip_Cells(p,4) !=1 ); 
-		}
-		for (i=1; i <= 0; i++)
-		{
-			while (placeShip_Cells(p,3) !=1 );
-		}
 		for (i=1; i <= 1; i++)
 		{
 			while (placeShip_Cells(p,2) !=1 );
