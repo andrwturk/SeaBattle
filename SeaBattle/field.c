@@ -1,5 +1,6 @@
 #include "field.h"
 #include "stringOperations.h"
+#include "coord.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -9,7 +10,7 @@
 #define SHIP_CELL_SYMB "O"
 #define KILLED_SHIP_CELL_SYMB "X"
 
-#define FIELD_LENGTH 6
+//#define FIELD_LENGTH 6
 #define COMPUTER_NAME "Computer"
 #define PLANAR(X,Y) (X + Y * FIELD_LENGTH)
 

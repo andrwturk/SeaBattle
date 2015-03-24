@@ -1,7 +1,7 @@
 #ifndef COORD_H
 #define COORD_H
 
-#define FIELD_LENGTH 6
+#define FIELD_LENGTH 10
 
 typedef struct {
 	int x;
