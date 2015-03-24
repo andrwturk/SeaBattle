@@ -19,7 +19,7 @@ int i,j;
 void placeShips(Player p) 
 {
 	
-srand(time(NULL));
+//srand(time(NULL));
 int a;	
 	
 	

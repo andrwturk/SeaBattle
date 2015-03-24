@@ -14,7 +14,7 @@ int humanShipKilled = 0;
 
 Coord computerMove() {
 
-srand(time(NULL)); // Инициализируем генератор случайных чисел;
+//srand(time(NULL)); // Инициализируем генератор случайных чисел;
 			
 	if (shipHurted == 0) // рандомный пиу-пиу если прошлый выстрел был мимо;
 	{

@@ -29,6 +29,8 @@ void gameMain() // game entry point
 { 
 
 	// game main cycle
+	srand(time(NULL));
+	
 	initField();
 	placeShips(HUMAN);
 	placeShips(COMPUTER);
