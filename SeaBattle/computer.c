@@ -1,11 +1,14 @@
+#include <stdio.h>
 #include "computer.h"
+#include "coord.h"
+
 
 Coord hurtHit, previousHurtHit, c;			// Инициализируем структуру для хранения последнего успешного выстрела.
 
 int computerTurnNumber = 0; // инициализируем переменную для счета ходов компьютера;
 
 int shipHurted = 0;		//Инициализируем переменные состояния кораблей;
-//int humanShipKilled = 0;
+int humanShipKilled = 0;
 
 
 

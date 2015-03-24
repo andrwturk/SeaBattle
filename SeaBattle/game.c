@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "field.h"
 #include "shipPlacer.h"
 #include "computer.h"
@@ -16,7 +17,7 @@ Coord c;
 
 int computerShipKilled = 0;
 //int humanShipKilled = 0;
-//extern humanShipKilled;
+extern humanShipKilled;
 
 int main(int argc, char const *argv[])
 {
@@ -68,7 +69,7 @@ void checkHumanMove()
 		else
 		{
 			if (countAliveShipCell(COMPUTER) != 0) //если есть живые клетки корабля значит корабль ранен
-				pfintf ("You've hurhed the ship! Shoot again!");
+				printf ("You've hurhed the ship! Shoot again!");
 			else
 			{
 				printf("Congratulations! You've sunk the ship! Shoot again!\n"); //если нет живых клеток корабля - следственно корабль убит.
