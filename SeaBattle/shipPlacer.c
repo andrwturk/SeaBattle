@@ -1,5 +1,5 @@
 #include "field.h"
-
+#include "coord.h"
 #include "shipPlacer.h"
 #define TRUE 1
 #define FALSE 0
