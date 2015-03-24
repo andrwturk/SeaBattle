@@ -16,70 +16,77 @@ int direction;
 Coord c;
 int i,j;
 
-void placeShips(Player p) 
+int placeShips(Player p) 
 {
+	
 srand(time(NULL));
-
-if (FIELD_LENGTH >= 10)
-{	for (i=1; i <= 1; i++)
-	{
-		while (placeShip_Cells(p,4) !=1 ); 
-	}
-	for (i=1; i <= 2; i++)
-	{
-		while (placeShip_Cells(p,3) !=1 ); 
-	}
-	for (i=1; i <= 3; i++)
-	{
-		while (placeShip_Cells(p,2) !=1 ); 
-	}
-	for (i=1; i <= 4; i++)
-	{
-		while (placeShip_Cells(p,1) !=1 ); 
-	}
-
-}	
-else if (FIELD_LENGTH == 8)
-{	
-	for (i=1; i <= 0; i++)
-	{
-		while (placeShip_Cells(p,4) !=1 );  
-	}
-	for (i=1; i <= 1; i++)
-	{
-		while (placeShip_Cells(p,3) !=1 ); 
-	}
-	for (i=1; i <= 2; i++)
-	{
-		while (placeShip_Cells(p,2) !=1 ); 
-	}
-	for (i=1; i <= 3; i++)
-	{
-		while (placeShip_Cells(p,1) !=1 ); 
-	}
-
-}	
-else if (FIELD_LENGTH == 6)
+int a;	
+	
+	
+	if (FIELD_LENGTH >= 10)
+	{	for (a=1; a <= 1; a++)
+		{
+			while (placeShip_Cells(p,4) !=1 );
+			//print_computer ();		
+		}
+		for (a=1; a <= 2; a++)
+		{
+			while (placeShip_Cells(p,3) !=1 );
+			//print_computer ();	
+		}
+		for (a=1; a <= 3; a++)
+		{
+			while (placeShip_Cells(p,2) !=1 );
+			//print_computer ();	
+		}
+		for (a=1; a <= 4; a++)
+		{
+			while (placeShip_Cells(p,1) !=1 );
+			//print_computer ();	
+		}
+		return 1;
+	}	
+	else if (FIELD_LENGTH == 8)
 	{	
-	for (i=1; i <= 0; i++)
-	{
-		while (placeShip_Cells(p,4) !=1 ); 
+		for (i=1; i <= 0; i++)
+		{
+			while (placeShip_Cells(p,4) !=1 );  
+		}
+		for (i=1; i <= 1; i++)
+		{
+			while (placeShip_Cells(p,3) !=1 ); 
+		}
+		for (i=1; i <= 2; i++)
+		{
+			while (placeShip_Cells(p,2) !=1 ); 
+		}
+		for (i=1; i <= 3; i++)
+		{
+			while (placeShip_Cells(p,1) !=1 ); 
+		}
+		return 1;
+	}	
+	else if (FIELD_LENGTH == 6)
+	{	
+		for (i=1; i <= 0; i++)
+		{
+			while (placeShip_Cells(p,4) !=1 ); 
+		}
+		for (i=1; i <= 0; i++)
+		{
+			while (placeShip_Cells(p,3) !=1 );
+		}
+		for (i=1; i <= 1; i++)
+		{
+			while (placeShip_Cells(p,2) !=1 );
+		}
+		for (i=1; i <= 2; i++)
+		{
+			while (placeShip_Cells(p,1) !=1 );
+		}
+		return 1;
 	}
-	for (i=1; i <= 0; i++)
-	{
-		while (placeShip_Cells(p,3) !=1 );
-	}
-	for (i=1; i <= 1; i++)
-	{
-		while (placeShip_Cells(p,2) !=1 );
-	}
-	for (i=1; i <= 2; i++)
-	{
-		while (placeShip_Cells(p,1) !=1 );
-	}
-
-}
-
+	return 0;
 }
 int placeShip_Cells(Player p,int quanity)
 {	
@@ -87,6 +94,7 @@ int placeShip_Cells(Player p,int quanity)
 	c.y = rand () % FIELD_LENGTH;
 	direction = rand () % 2;
 	//printf ("c.x=%d  c.y=%d  direction=%d\n\n",c.x,c.y,direction);
+	//printf ("possibility = %d quanity= %d\n",is_possibility(p,direction,quanity,c),quanity);
 		if (is_possibility(p,direction,quanity,c) == TRUE)
 		{
 			for (i = 0; i <= (quanity-1); i++)
@@ -98,13 +106,40 @@ int placeShip_Cells(Player p,int quanity)
 				}
 				return 1;
 		}
-				
+		else return 0;		
 }
 		
 
 int is_possibility(Player p,int dir,int qnt,Coord c)
 {
-if (dir == 0)
+if(qnt == 1 )
+{	
+	int y_start = -1;
+	int x_start = -1;
+	int y_finish = 1;
+	int x_finish = 1;
+	
+	if (c.x == 0)
+		x_start = c.x;
+	else if (c.x == (FIELD_LENGTH-1))
+		x_finish = 0;
+	if (c.y == 0)
+		y_start = c.y;
+	else if (c.y == (FIELD_LENGTH-1))
+		y_finish = 0;
+	
+			for (j =y_start; j<=y_finish; j++)
+			{
+				for (i=x_start; i<=x_finish; i++)
+				{
+					if(check(p,(c.x+i),(c.y+j)) == SHIP_CELL)
+						return 0;
+				}
+			}
+}
+
+
+else if (dir == 0)
 	{
 		int y_start = -1;
 		int x_start = -1;
@@ -120,7 +155,7 @@ if (dir == 0)
 		if (c.y == (FIELD_LENGTH-1))
 			y_finish = 0;
 		
-		if( (c.x+qnt) != (FIELD_LENGTH-1) )
+		if( (c.x+qnt) <= (FIELD_LENGTH-1) )
 		{
 			for (j =y_start; j<=y_finish; j++)
 			{
@@ -134,35 +169,35 @@ if (dir == 0)
 		}
 		else return 0;
 	}
-else if (dir == 1)
-{
-	int y_start = -1;
-	int x_start = -1;
-	int y_finish = qnt;
-	int x_finish = 1;
-		
-	if (c.x == 0)
-		x_start = c.x;
-	if (c.x == (FIELD_LENGTH-1))
-		x_finish = 0;
-	if (c.y == 0)
-		y_start = c.y;
-	if ((c.y+qnt) == (FIELD_LENGTH-1))
-		y_finish = (qnt-1);
-		
-	if( (c.y+qnt) != FIELD_LENGTH )
+	else if (dir == 1)
 	{
-		for (i =x_start; i<=x_finish; i++)
+		int y_start = -1;
+		int x_start = -1;
+		int y_finish = qnt;
+		int x_finish = 1;
+		
+		if (c.x == 0)
+			x_start = c.x;
+		if (c.x == (FIELD_LENGTH-1))
+			x_finish = 0;
+		if (c.y == 0)
+			y_start = c.y;
+		if ((c.y+qnt) == (FIELD_LENGTH-1))
+			y_finish = (qnt-1);
+		
+		if( (c.y+qnt) <= (FIELD_LENGTH-1) )
 		{
-			for (j=y_start; j<=y_finish; j++)
+			for (i =x_start; i<=x_finish; i++)
 			{
-				if(check(p,(c.x+i),(c.y+j)) == SHIP_CELL)
-					return 0;
+				for (j=y_start; j<=y_finish; j++)
+				{
+					if(check(p,(c.x+i),(c.y+j)) == SHIP_CELL)
+						return 0;
+				}
 			}
-		}
 			
+		}
+		else return 0;
 	}
-	else return 0;
-}
-return 1;
+	return 1;
 }
