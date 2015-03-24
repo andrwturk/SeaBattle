@@ -158,3 +158,9 @@ void tellComputerMissed()
 {
 	computerTurnNumber++; // считаем количество ходов;
 }
+
+
+int getKilledShips()
+{
+	return humanShipKilled;
+}

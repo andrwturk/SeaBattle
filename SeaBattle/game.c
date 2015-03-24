@@ -16,8 +16,8 @@ CellType cell;
 Coord c;
 
 int computerShipKilled = 0;
-//int humanShipKilled = 0;
-extern humanShipKilled;
+//int humanShipKilled1 = 0;
+int  humanShipKilled1 = 0;
 
 int main(int argc, char const *argv[])
 {
@@ -41,7 +41,7 @@ void gameMain() // game entry point
 
 	printField();
 
-	while (computerShipKilled < NUMBER_OF_SHIPS && humanShipKilled < NUMBER_OF_SHIPS)
+	while (computerShipKilled < NUMBER_OF_SHIPS && humanShipKilled1 < NUMBER_OF_SHIPS)
 	{
 		//Первым ходит человек;
 		c = humanMove();
@@ -54,6 +54,8 @@ void gameMain() // game entry point
 		checkComputerMove();
 
 		printField();
+
+		humanShipKilled1 = getKilledShips();
 	}
 	
 	if (computerShipKilled == NUMBER_OF_SHIPS)

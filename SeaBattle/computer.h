@@ -12,5 +12,6 @@ Coord computerMove();
 void tellComputerShipHurted();
 void tellComputerShipKilled();
 void tellComputerMissed();
+int getKilledShips();
 
 #endif
