@@ -55,7 +55,7 @@ void gameMain() // game entry point
 
 		printField();
 
-		humanShipKilled1 = getKilledShips();
+//		humanShipKilled1 = getKilledShips();
 	}
 	
 	if (computerShipKilled == NUMBER_OF_SHIPS)
@@ -81,6 +81,8 @@ void checkHumanMove()
 				computerShipKilled++;
 			}
 		}
+		if (computerShipKilled == NUMBER_OF_SHIPS)
+			break;
 		c = humanMove(); // Если игрок попал либо в стреляную точку либо в корабль - у игрока появляется дополнительный ход.
 		cell = shoot(COMPUTER, c.x, c.y);
 	}
@@ -140,7 +142,9 @@ void checkComputerMove()
 			else
 				tellComputerShipKilled();
 		}
-		
+		humanShipKilled1 = getKilledShips();
+		if (humanShipKilled1 == NUMBER_OF_SHIPS)
+			break;
 		c = computerMove();					//Если коммп попал или стрельнул куда уже стрелял - даем ему стрельнуть еще разок.
 		cell = shoot(HUMAN, c.x, c.y);
 	}
