@@ -33,10 +33,12 @@ char *str_replace(char *orig, char *rep, char *with);
 void rep(char *orig, char *rep, char *with);	
 
 char templateField[TEMPLATE_FIELD_SIZE];
+char renderedField[TEMPLATE_FIELD_SIZE];
 
 void emptyFieldByPlayer(Player p){
 	
 	CellType *field = fields[(int)p]; // select field
+
 
 	int i,j;
 	for (i=0;i<FIELD_LENGTH;++i) {
@@ -90,7 +92,7 @@ CellType shoot(Player p, int x, int y) {
 		field[PLANAR(x,y)] = KILLED_SHIP_CELL;
 		return SHIP_CELL;
 	}
-	else if (field[PLANAR(x,y)] == SHIP_CELL) { // killed ship
+	else if (field[PLANAR(x,y)] == KILLED_SHIP_CELL) { // killed ship
 		return KILLED_SHIP_CELL;
 	}
 	else {
@@ -100,10 +102,12 @@ CellType shoot(Player p, int x, int y) {
 
 void printField() {
 
+	memcpy(renderedField, templateField, sizeof(renderedField));
+
 	renderField(COMPUTER);
 	renderField(HUMAN);
 	
-	printf("\n\n%s\n\n\n\n", templateField);
+	printf("\n\n%s\n\n\n\n", renderedField);
 
 }
 
@@ -146,7 +150,7 @@ void renderField(Player p) {
 			fieldEnumerator[2] = fieldHorizontalHelper++;
 			fieldEnumerator[3] = '\0';
 
-			rep(templateField, fieldEnumerator, cellToStr(p, field[PLANAR(i,j)]));
+			rep(renderedField, fieldEnumerator, cellToStr(p, field[PLANAR(i,j)]));
 		}
 	}
 }
@@ -179,6 +183,8 @@ void setPlayerName(char* name) {
 // string operations
 void rep(char *orig, char *rep, char *with) {
 	char *p = str_replace(orig, rep, with);
-	strncpy(templateField, p, strlen(orig));	
+	strncpy(renderedField, p, strlen(orig));	
 }
+
+
 

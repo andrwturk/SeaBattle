@@ -45,7 +45,7 @@ Coord humanMove()
 	else 					  // если введеная координата не попала в диапазон заглавных(строчных) анг букв, если не вышла за предел ASCII, то введено что-то явно не похожее на координату
 	{
 		system("cls");			  //Очистка экрана
-		printf("\nIncorrect axis coordinate (coordinate should be in the range of from a to %d)\nEnter the coordinate of X axis again\n\n",('a'+FIELD_LENGTH-1));
+		printf("\nIncorrect axis coordinate (coordinate should be in the range of from a to %c)\nEnter the coordinate of X axis again\n\n",('a'+FIELD_LENGTH-1));
 		fflush(stdin);			  //Очистка буффера ввода
 		goto Start_X;			  //Безусловный переход в точку ввода координаты X
 	}
