@@ -16,7 +16,7 @@ Coord humanMove()
 	c.y -=1;	//Приводим координату по Y к рабочему виду (первое поле по Y начинается с 1 а работаем мы с 0 )
 	if (c.y < 0 || c.y > (FIELD_LENGTH-1)) //Первоначальная проверка на то, что что координата находится в пределах координат (размера) поля 
 	{
-		system("cls");     	       //Очистка экрана
+	//	system("cls");     	       //Очистка экрана
 		printf("\nIncorrect axis coordinate (coordinate should be in the range of from 1 to %d)\nEnter the coordinate of Y axis again\n\n",FIELD_LENGTH);
 		fflush(stdin);		       //Очистка буффера ввода
 		c.y = -1;		       //Присваем координату кторая заведомо не входит в пределы поля 
@@ -37,21 +37,26 @@ Coord humanMove()
 	}	
 	else if(c.x > LAST_ACSII)		  //Проверка раскладки клавиатуры, если введеный символ выходит за пределы стандртной таблицы символов ACSII значит язык раскладки клавиатуры не английский
 	{
-		system("cls");			  //Очистка экрана
+	//	system("cls");			  //Очистка экрана
 		printf("\nIncorrect axis coordinate (Switch the keyboard layout into ENGLISH)\nEnter the coordinate of X axis again\n\n");
 		fflush(stdin);			  //Очистка буффера ввода
 		goto Start_X;			  //Безусловный переход в точку ввода координаты X
 	}
 	else 					  // если введеная координата не попала в диапазон заглавных(строчных) анг букв, если не вышла за предел ASCII, то введено что-то явно не похожее на координату
 	{
+<<<<<<< HEAD
 		system("cls");			  //Очистка экрана
 		printf("\nIncorrect axis coordinate (coordinate should be in the range of from a to %c)\nEnter the coordinate of X axis again\n\n",('a'+FIELD_LENGTH-1));
+=======
+	//	system("cls");			  //Очистка экрана
+		printf("\nIncorrect axis coordinate (coordinate should be in the range of from a to %d)\nEnter the coordinate of X axis again\n\n",('a'+FIELD_LENGTH-1));
+>>>>>>> 71fd62367fa857fe951e9eedf4facd736fa6f2a2
 		fflush(stdin);			  //Очистка буффера ввода
 		goto Start_X;			  //Безусловный переход в точку ввода координаты X
 	}
 			
 
-	system("cls");				  //Очистка экрана
+//	system("cls");				  //Очистка экрана
 	fflush(stdin);				  //Очистка буффера ввода
 	Answer:					  //Точка ввода вопроса про подтверждения введеных координат
 	printf("You Enter such cordinate :\n Y = %d\n X = %c\n Please enter\n - y if you confirm cordinatesor \n - n if you want enter cordinates again\n ",y_cord,x_cord);
@@ -63,14 +68,14 @@ Coord humanMove()
 			
 	else if (confirm == 'n' || confirm == 'N')	//Если введено N(Нет), возвращаемся к вводу координат, безусловным переходом предварительно изменив координаты на заведомо ошибочные 
 	{
-		system("cls");
+	//	system("cls");
 		c.x = -1;
 		c.y = -1;
 		goto Start;
 	}
 	else 						//Если введено что либо другое, возвращаемся к вопросу
 	{
-		system("cls");
+	//	system("cls");
 		printf ("You write wrong answer, please repeat your choise");
 		goto Answer;
 	}

@@ -5,7 +5,7 @@
 #include "human.h"
 #include "coord.h"
 
-#define NUMBER_OF_SHIPS 6
+#define NUMBER_OF_SHIPS 3
 
 void gameMain();
 void checkHumanMove();
@@ -92,36 +92,36 @@ void checkHumanMove()
 
 int countAliveShipCell (Player p) //ищем живые клетки корабля во всех направлениях, считаем их и выводим из функции.
 {
-	CellType tempCell = EMPTY_CELL;
+	CellType tempCell = cell;
 	int numberOFaliveShipCell = 0;
 	int i;
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i)  //проходимся влево от точки
+	for (i = 1; (tempCell == SHIP_CELL || tempCell == KILLED_SHIP_CELL) && c.x - i >= 0; ++i)  //проходимся влево от точки
 	{
-		tempCell = check(p, c.x - i, c.y);
+		tempCell = check(p, (c.x - i), (c.y));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
 	}
-
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вправо
+	tempCell = cell;
+	for (i = 1; (tempCell == SHIP_CELL || tempCell == KILLED_SHIP_CELL) && c.x + i < FIELD_LENGTH -1; ++i) //проходимся вправо
 	{
-		tempCell = check(p, c.x + i, c.y);
+		tempCell = check(p, (c.x + i), (c.y));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
 	}
-
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вверх
+	tempCell = cell;
+	for (i = 1; (tempCell == SHIP_CELL || tempCell == KILLED_SHIP_CELL) && c.y - i >= 0; ++i) //проходимся вверх
 	{
-		tempCell = check(p, c.x, c.y - i);
+		tempCell = check(p, (c.x), (c.y - i));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
 	}
-	
-	for (i = 1; tempCell != EMPTY_CELL || tempCell != CHECKED_CELL; ++i) //проходимся вниз
+	tempCell = cell;
+	for (i = 1; (tempCell == SHIP_CELL || tempCell == KILLED_SHIP_CELL) && c.y + i < FIELD_LENGTH - 1; ++i) //проходимся вниз
 	{
-		tempCell = check(p, c.x, c.y + i);
+		tempCell = check(p, (c.x), (c.y + i));
 		if (tempCell == SHIP_CELL)
 			numberOFaliveShipCell++;
 
@@ -133,11 +133,14 @@ void checkComputerMove()
 {
 	while (cell == CHECKED_CELL || cell == KILLED_SHIP_CELL || cell == SHIP_CELL)
 	{
+		if (cell == SHIP_CELL)
+		{
+			if (countAliveShipCell(HUMAN) != 0) //если есть живые клетки корабля значит корабль ранен
+				tellComputerShipHurted();
+			else
+				tellComputerShipKilled();
+		}
 		
-		if (countAliveShipCell(HUMAN) != 0) //если есть живые клетки корабля значит корабль ранен
-			tellComputerShipHurted();
-		else
-			tellComputerShipKilled();
 		c = computerMove();					//Если коммп попал или стрельнул куда уже стрелял - даем ему стрельнуть еще разок.
 		cell = shoot(HUMAN, c.x, c.y);
 	}
