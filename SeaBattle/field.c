@@ -16,7 +16,7 @@
 #define COMPUTER_NAME "Computer"
 #define PLANAR(X,Y) (X + Y * FIELD_LENGTH)
 
-#define TEMPLATE_FIELD_SIZE 6144
+#define TEMPLATE_FIELD_SIZE 4096
 
 void prepareTemplate();
 void emptyField();

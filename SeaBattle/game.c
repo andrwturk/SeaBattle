@@ -63,6 +63,7 @@ void gameMain() // game entry point
 	else
 		printf("You lost the game! Try once again!\n");
 
+	fflush(stdin);	
 	getchar();
 }
 
@@ -76,13 +77,14 @@ void checkHumanMove()
 		else
 		{
 			if (countAliveShipCell(COMPUTER) != 0) //если есть живые клетки корабля значит корабль ранен
-				printf ("You've hurhed the ship! Shoot again!");
+				printf ("You've hurted the ship! Shoot again!");
 			else
 			{
 				printf("Congratulations! You've sunk the ship! Shoot again!\n"); //если нет живых клеток корабля - следственно корабль убит.
 				computerShipKilled++;
 			}
 		}
+		printField();
 		if (computerShipKilled == NUMBER_OF_SHIPS)
 			break;
 		c = humanMove(); // Если игрок попал либо в стреляную точку либо в корабль - у игрока появляется дополнительный ход.
