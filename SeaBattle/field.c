@@ -151,7 +151,7 @@ void renderField(Player p) {
 		for (j=0;j<FIELD_LENGTH;++j) {
 			fieldEnumerator[2] = fieldHorizontalHelper++;
 			fieldEnumerator[3] = '\0';
-			rep(renderedField, fieldEnumerator, cellToStr(p, field[PLANAR(i,j)]));
+			rep(renderedField, fieldEnumerator, cellToStr(p, field[PLANAR(j,i)]));
 		}
 	}
 }
