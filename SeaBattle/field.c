@@ -9,6 +9,8 @@
 #define CHECKED_CELL_SYMB "-"
 #define SHIP_CELL_SYMB "O"
 #define KILLED_SHIP_CELL_SYMB "X"
+#define UNDEFINED_CELL_SYMB "U"
+
 
 //#define FIELD_LENGTH 6
 #define COMPUTER_NAME "Computer"
@@ -100,7 +102,7 @@ CellType shoot(Player p, int x, int y) {
 	}
 }
 
-void printField() {
+void printField() { 
 
 	memcpy(renderedField, templateField, sizeof(renderedField));
 
@@ -129,7 +131,7 @@ char* cellToStr(Player p, int cell) {
 		return KILLED_SHIP_CELL_SYMB;
 	}
 
-	return NULL;
+	return UNDEFINED_CELL_SYMB;
 }
 
 void renderField(Player p) {
@@ -149,14 +151,15 @@ void renderField(Player p) {
 		for (j=0;j<FIELD_LENGTH;++j) {
 			fieldEnumerator[2] = fieldHorizontalHelper++;
 			fieldEnumerator[3] = '\0';
-
 			rep(renderedField, fieldEnumerator, cellToStr(p, field[PLANAR(i,j)]));
 		}
 	}
 }
 
 void initField() {
+
 	prepareTemplate();
+	emptyField();
 }
 
 void prepareTemplate() {
