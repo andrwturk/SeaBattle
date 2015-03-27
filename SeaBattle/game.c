@@ -5,7 +5,7 @@
 #include "human.h"
 #include "coord.h"
 
-#define NUMBER_OF_SHIPS 3
+#define NUMBER_OF_SHIPS 10
 
 void gameMain();
 void checkHumanMove();
@@ -62,6 +62,8 @@ void gameMain() // game entry point
 		printf("You won the game!\n");
 	else
 		printf("You lost the game! Try once again!\n");
+
+	getchar();
 }
 
 void checkHumanMove()

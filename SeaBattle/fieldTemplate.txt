@@ -1,17 +1,25 @@
                player                              computer
 
-        a   b   c   d   e   f                a   b   c   d   e   f
+        a   b   c   d   e   f   g   h   i   j                a   b   c   d   e   f   g   h   i   j
 
-    1   p1a   p1b   p1c   p1d   p1e   p1f   1        1   c1a   c1b   c1c   c1d   c1e   c1f   1
+    1   p0a   p0b   p0c   p0d   p0e   p0f   p0g   p0h   p0i   p0j   1        1   c0a   c0b   c0c   c0d   c0e   c0f   c0g   c0h   c0i   c0j   1
 
-    2   p2a   p2b   p2c   p2d   p2e   p2f   2        2   c2a   c2b   c2c   c2d   c2e   c2f   2
+    2   p1a   p1b   p1c   p1d   p1e   p1f   p1g   p1h   p1i   p1j   2        2   c1a   c1b   c1c   c1d   c1e   c1f   c1g   c1h   c1i   c1j   2
 
-    3   p3a   p3b   p3c   p3d   p3e   p3f   3        3   c3a   c3b   c3c   c3d   c3e   c3f   3
+    3   p2a   p2b   p2c   p2d   p2e   p2f   p2g   p2h   p2i   p2j   3        3   c2a   c2b   c2c   c2d   c2e   c2f   c2g   c2h   c2i   c2j   3
 
-    4   p4a   p4b   p4c   p4d   p4e   p4f   4        4   c4a   c4b   c4c   c4d   c4e   c4f   4
+    4   p3a   p3b   p3c   p3d   p3e   p3f   p3g   p3h   p3i   p3j   4        4   c3a   c3b   c3c   c3d   c3e   c3f   c3g   c3h   c3i   c3j   4
 
-    5   p5a   p5b   p5c   p5d   p5e   p5f   5        5   c5a   c5b   c5c   c5d   c5e   c5f   5
+    5   p4a   p4b   p4c   p4d   p4e   p4f   p4g   p4h   p4i   p4j   5        5   c4a   c4b   c4c   c4d   c4e   c4f   c4g   c4h   c4i   c4j   5
 
-    6   p6a   p6b   p6c   p6d   p6e   p6f   6        6   c6a   c6b   c6c   c6d   c6e   c6f   6
+    6   p5a   p5b   p5c   p5d   p5e   p5f   p5g   p5h   p5i   p5j   6        6   c5a   c5b   c5c   c5d   c5e   c5f   c5g   c5h   c5i   c5j   6
 
-        a   b   c   d   e   f                a   b   c   d   e   f 
+    7   p6a   p6b   p6c   p6d   p6e   p6f   p6g   p6h   p6i   p6j   7        7   c6a   c6b   c6c   c6d   c6e   c6f   c6g   c6h   c6i   c6j   7
+
+    8   p7a   p7b   p7c   p7d   p7e   p7f   p7g   p7h   p7i   p7j   8        8   c7a   c7b   c7c   c7d   c7e   c7f   c7g   c7h   c7i   c7j   8
+
+    9   p8a   p8b   p8c   p8d   p8e   p8f   p8g   p8h   p8i   p8j   9        9   c8a   c8b   c8c   c8d   c8e   c8f   c8g   c8h   c8i   c8j   9
+
+   10   p9a   p9b   p9c   p9d   p9e   p9f   p9g   p9h   p9i   p9j   10      10   c9a   c9b   c9c   c9d   c9e   c9f   c9g   c9h   c9i   c9j   10
+
+        a   b   c   d   e   f   g   h   i   j                a   b   c   d   e   f   g   h   i   j 
