@@ -16,7 +16,7 @@
 #define COMPUTER_NAME "Computer"
 #define PLANAR(X,Y) (X + Y * FIELD_LENGTH)
 
-#define TEMPLATE_FIELD_SIZE 1024
+#define TEMPLATE_FIELD_SIZE 4096
 
 void prepareTemplate();
 void emptyField();
@@ -142,7 +142,7 @@ void renderField(Player p) {
 	fieldEnumerator[0] = playerId[(int)p];
 
 	int i,j;
-	char fieldVerticalHelper = '1';
+	char fieldVerticalHelper = '0';
 	char fieldHorizontalHelper;
 
 	for (i=0;i<FIELD_LENGTH;++i) {
@@ -151,7 +151,7 @@ void renderField(Player p) {
 		for (j=0;j<FIELD_LENGTH;++j) {
 			fieldEnumerator[2] = fieldHorizontalHelper++;
 			fieldEnumerator[3] = '\0';
-			rep(renderedField, fieldEnumerator, cellToStr(p, field[PLANAR(i,j)]));
+			rep(renderedField, fieldEnumerator, cellToStr(p, field[PLANAR(j,i)]));
 		}
 	}
 }
