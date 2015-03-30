@@ -78,7 +78,7 @@ printf("Ships killed %d\n",b);
 
 int checkinfield (int a) {
 
-	if ( a  <= -1 || a >= 6  )
+	if ( a  <= -1 || a >= 10  )
 	{ return 1;
     }
     else{
